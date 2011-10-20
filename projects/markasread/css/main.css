@@ -1,0 +1,61 @@
+/**
+ * @author Emmanuel VAISSE <evaisse@gmail.com>
+ * @version 1.0 
+ */
+@import url('http://fonts.googleapis.com/css?family=Rokkitt');
+
+/*
+    Html5 reset
+*/
+article, aside, audio, canvas, datagrid, datalist, details, dialog,
+figure, footer, header, menu, nav, section, video { display: block; }
+eventsource, mark, meter, time, progress, output, bb { display:inline; }
+
+/*
+    Colors
+*/
+.c1 {color: #E8EBED}
+.cb1 {background-color: #E8EBED}
+.c2 {color: #E1E5E7}
+.cb2 {background-color: #E1E5E7}
+.c3 {color: #DCE1E3}
+.cb3 {background-color:#DCE1E3}
+
+/*
+    Typo
+*/
+h1, h2, h3 {
+    font: normal normal 14px/1 'Rokkitt', Helvetica, Arial, sans-serif;
+    color: #485358;
+}
+.light {
+    color: #777;
+}
+
+/*
+    Helpers
+*/
+
+
+
+/*
+    Layout
+*/
+body {
+	height: 100%;
+	overflow-y: scroll;
+	background: #E8EBED;
+}
+
+#doc {
+    
+}
+
+#hd {
+    
+}
+
+#bd {
+    
+}
+
