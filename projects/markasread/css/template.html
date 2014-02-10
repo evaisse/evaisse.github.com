@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}</title>
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+	<meta name="keywords" content="Python,PHP,HTML,CSS,XML,JavaScript,Web,design,UI">
+    <meta name="author" content="Emmanuel VAÏSSE">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+    <link rel="stylesheet" 
+          href="http://evaisse.github.com/projects/markasread/css/main.css" 
+          type="text/css" media="screen" />
+
+    <link rel="icon" type="image/gif" 
+        href="http://evaisse.github.com/projects/markasread/favicon.gif">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+
+    <meta name="viewport" content="width=775"/> <!-- iPhone -->
+
+    <script>
+    if('{SearchQuery}'.length != 0) {
+       document.getElementById('search-form').style.display = 'block';
+    }
+    if(!/*@cc_on!@*/0) return;
+    var e = 'article,aside,audio,bb,canvas,datagrid,datalist,'
+        +  'details,dialog,eventsource,figure,footer,header,'
+        + 'hgroup,mark,menu,meter,nav,output,progress'
+        +',section,time,video'.split(',');
+    for(var i=0, iTotal = e.length; i<iTotal;i++) {
+       document.createElement(e[i]);
+    }
+    </script>
+
+</head>
+<body>
+<div id="doc">
+
+    <header>
+        <nav role="navigation">
+            <ul id="menu">
+                <li>
+                    <a href="/" title="Notes & articles">Notes</a> / 
+                </li>
+                <li>
+                    <a href="/about" title="About Me">About</a> / 
+                </li>
+                <li>
+                    <a href="/" title="Search" 
+                    onclick="javascript:var d = document.getElementById('search-form');d.style.display = 'block';d.focus();return false;">        
+                    <label>Search</label></a> / 
+                </li>
+                <li>
+                    <a href="/post/85164949/archives">Archives</a> /
+                </li>
+                <li>
+                    <sub>Powered By</sub>
+                    <a href="http://www.tumblr.com" 
+                    title="tubmlr" id="tumblr-logo">Tumblr</a> / 
+                </li>
+            </ul>
+        </nav>
+        <form role="search" 
+                id="search-form" action="/search" method="get"
+                style="display:none">
+            <input type="search" name="q" value="{SearchQuery}" id="search-input" size="40" placeholder="Search..."/>
+            <input type="submit" value="Search" />
+        </form>
+    </header>
+
+
+    <section id="bd">
+
+
+        {block:TagPage}
+        <h1>About {URLSafeTag}</h1>
+        {/block:TagPage}
+
+
+        <section id="posts">
+            {block:Posts}
+
+            {block:Video}
+            <article class="video">
+                <div class="infos">
+                    Published {TimeAgo}{block:HasTags} about {block:Tags}
+                    <a href="{TagURL}">{Tag}</a>, {/block:Tags}...{/block:HasTags}
+                </div>
+                <div class="visual">{Video-500}</div>
+                {block:Caption}
+                <div class="words">{Caption}</div>
+                {/block:Caption}
+            </article>
+            {/block:Video}
+
+            {block:Audio}
+            <article class="audio">
+                <div class="infos">
+                    Published {TimeAgo}{block:HasTags} about {block:Tags}
+                    <a href="{TagURL}">{Tag}</a>, {/block:Tags}...{/block:HasTags}
+                </div>
+                <div class="sound">{AudioPlayerBlack}</div>
+                {block:Caption}
+                <div class="words">{Caption}</div>
+                {/block:Caption}
+            </article>
+            {/block:Audio}
+
+            {block:Chat}
+            <article class="chat">
+                <div class="perma">
+                    <a href="{Permalink}">{block:Title}{Title}{/block:Title}</a>
+                </div>
+                <ul class="convo">
+                    {block:Lines}
+                    <li class="{Alt}">
+                        {block:Label}<strong>{Label}</strong>{/block:Label} {Line}
+                    </li>
+                    {/block:Lines}
+                </ul>
+            </article>
+            {/block:Chat}
+
+            {block:Link}
+            <article class="link">
+                <h2>
+                    <a href="{Permalink}">{Name}</a>
+                </h2>
+                <div class="infos">
+                    Published {TimeAgo}{block:HasTags} about {block:Tags}
+                    <a href="{TagURL}">{Tag}</a>, {/block:Tags}...{/block:HasTags}
+                </div>
+                <div class="words">{Description}
+                    <ul>
+                        <li>
+                            <a href="{URL}">{Name} &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            {/block:Link}
+
+            {block:Quote}
+            <article class="quote">
+                <div class="wisdom">&ldquo;{Quote}&rdquo;</div>
+                    {block:Source}
+                    <div class="words">{Source}</div>
+                    {/block:Source}
+                    <div class="infos">
+                        Published {TimeAgo}{block:HasTags} about {block:Tags}
+                        <a href="{TagURL}">{Tag}</a>, {/block:Tags}...{/block:HasTags}
+                    </div>
+                </div>
+            <article>
+            {/block:Quote}
+
+            {block:Photo}
+            <article class="photo">
+                <div class="infos">Published {TimeAgo}{block:HasTags} about {block:Tags}
+                    <a href="{TagURL}">{Tag}</a>, {/block:Tags}...{/block:HasTags}
+                </div>
+                <div class="image">
+                    {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
+                </div>
+                {block:Caption}
+                <div class="words">{Caption}</div>
+                {/block:Caption}
+            </article>
+            {/block:Photo}
+
+            {block:Text}
+            <article class="text">
+                <header>
+                    <h2>
+                        <a href="{Permalink}">{block:Title}{Title}{/block:Title}</a>
+                    </h2>
+                    <div class="infos c{PostID} {TagsAsClasses}">
+                        Published {TimeAgo}{block:HasTags} about {block:Tags}
+                        <a href="{TagURL}">{Tag}</a>,
+                        {/block:Tags}...{/block:HasTags}
+                    </div>
+                </header>
+                <div class="words">{Body}</div>
+            </article>
+            {/block:Text}
+            {/block:Posts}
+        
+        </section><!-- .posts -->
+    
+    </section><!-- #bd -->
+
+
+
+    <footer>
+    {block:Pagination}
+        <nav class="pagination">
+            {block:NextPage}
+            <div id="next">
+                <a href="{NextPage}">&larr; Older posts</a>
+            </div>
+            {/block:NextPage}
+            {block:PreviousPage}
+            <div id="prev">
+                <a href="{PreviousPage}">Newer posts &rarr;</a>
+            </div>
+            {/block:PreviousPage}
+        </nav>
+        {/block:Pagination}
+    
+    
+        <footer id="copyright" role="contentinfo">
+            &copy; 2011-2012
+    	    <nav role="navigation">
+                &copy; 2011-2012
+    	    </nav>
+        </footer>
+    
+    </footer>
+
+</div>
+{block:IfGoogleAnalyticsID}
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', '{text:Google Analytics ID']);
+	_gaq.push(['_trackPageview']);
+	
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+{/block:IfGoogleAnalyticsID}
+</body>
+</html>
