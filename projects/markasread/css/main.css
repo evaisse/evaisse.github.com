@@ -1,11 +1,5 @@
 /**
-* @author Emmanuel VAISSE <evaisse@gmail.com>
-* @version 1.0 */
-/*@import url(http://fonts.googleapis.com/css?family=Rokkitt);*/
-/*
-Html5 reset
-*/
-/**
+ * @version 1.0 
  * Computer modern package for webfonts
  */
 @font-face {
@@ -24,6 +18,10 @@ Html5 reset
     font-weight: normal;
     font-style: normal;
 }
+
+/*
+    Html5 reset
+*/
 
 
 article,aside,audio,canvas,datagrid,datalist,details,dialog,figure,footer,header,menu,nav,section,video {
@@ -74,7 +72,7 @@ h1 a,h2 a,h3 a {
 }
 
 body {
-    font: normal normal 13px/1 'Computer Modern Serif';
+    font: normal normal 16px/1 'Computer Modern Serif';
     height: 100%;
     overflow-y: scroll;
     background: #E8EBED;
@@ -83,7 +81,7 @@ body {
 }
 
 code, pre {
-    font: normal normal 13px/1 'Computer Modern Typewriter';
+    font: normal normal 15px/1 'Computer Modern Typewriter';
 }
 
 a {
