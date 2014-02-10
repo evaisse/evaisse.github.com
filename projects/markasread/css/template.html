@@ -2,71 +2,57 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name='text:Disqus Shortname' content='' />
     <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}</title>
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-	<meta name="keywords" content="Python,PHP,HTML,CSS,XML,JavaScript,Web,design,UI">
+    <meta name="keywords" content="Python,PHP,HTML,CSS,XML,JavaScript,Web,design,UI">
     <meta name="author" content="Emmanuel VAÏSSE">
-	<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
-    <link rel="stylesheet" 
-          href="http://evaisse.github.com/projects/markasread/css/main.css" 
-          type="text/css" media="screen" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
+    <link rel="icon" 
+      href="http://19811021.s3.amazonaws.com/p/markasread/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="http://evaisse.github.io/projects/markasread/css/main.css">
 
-    <link rel="icon" type="image/gif" 
-        href="http://evaisse.github.com/projects/markasread/favicon.gif">
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
-
-    <meta name="viewport" content="width=775"/> <!-- iPhone -->
-
-    <script>
-    if('{SearchQuery}'.length != 0) {
-       document.getElementById('search-form').style.display = 'block';
-    }
-    if(!/*@cc_on!@*/0) return;
-    var e = 'article,aside,audio,bb,canvas,datagrid,datalist,'
-        +  'details,dialog,eventsource,figure,footer,header,'
-        + 'hgroup,mark,menu,meter,nav,output,progress'
-        +',section,time,video'.split(',');
-    for(var i=0, iTotal = e.length; i<iTotal;i++) {
-       document.createElement(e[i]);
-    }
-    </script>
-
+    <style>{CustomCSS}</style>
+    
 </head>
 <body>
+
+
 <div id="doc">
 
-    <header>
-        <nav role="navigation">
-            <ul id="menu">
-                <li>
-                    <a href="/" title="Notes & articles">Notes</a> / 
-                </li>
-                <li>
-                    <a href="/about" title="About Me">About</a> / 
-                </li>
-                <li>
-                    <a href="/" title="Search" 
-                    onclick="javascript:var d = document.getElementById('search-form');d.style.display = 'block';d.focus();return false;">        
-                    <label>Search</label></a> / 
-                </li>
-                <li>
-                    <a href="/post/85164949/archives">Archives</a> /
-                </li>
-                <li>
-                    <sub>Powered By</sub>
-                    <a href="http://www.tumblr.com" 
-                    title="tubmlr" id="tumblr-logo">Tumblr</a> / 
-                </li>
-            </ul>
-        </nav>
-        <form role="search" 
-                id="search-form" action="/search" method="get"
-                style="display:none">
-            <input type="search" name="q" value="{SearchQuery}" id="search-input" size="40" placeholder="Search..."/>
-            <input type="submit" value="Search" />
-        </form>
-    </header>
+<header>
+    <nav role="navigation">
+        <ul id="menu">
+            <li>
+                <a href="/" title="Notes & articles">Notes</a>
+            </li>
+            <li>
+                <a href="/about" title="About Me">About</a>
+            </li>
+            <li>
+                <a href="/archive">Archives</a>
+            </li>
+            <li>
+                <sub>Powered By</sub>
+                <a href="http://www.tumblr.com" 
+                title="tubmlr" id="tumblr-logo">Tumblr</a>
+            </li>
+            <li class="search">
+    <form role="search" 
+            id="search-form" action="/search" method="get">
+        <input type="search" name="q" value="{SearchQuery}" id="search-input" size="40" placeholder="Search..."/>
+    </form>
+    
+    
+    
+
+            </li>
+        </ul>
+    </nav>
+    
+    
+</header>
+
 
 
     <section id="bd">
@@ -123,20 +109,18 @@
 
             {block:Link}
             <article class="link">
-                <h2>
-                    <a href="{Permalink}">{Name}</a>
-                </h2>
-                <div class="infos">
-                    Published {TimeAgo}{block:HasTags} about {block:Tags}
-                    <a href="{TagURL}">{Tag}</a>, {/block:Tags}...{/block:HasTags}
-                </div>
-                <div class="words">{Description}
-                    <ul>
-                        <li>
-                            <a href="{URL}">{Name} &rarr;</a>
-                        </li>
-                    </ul>
-                </div>
+                <header>
+                    <h2>
+                        <a href="{URL}">{Name}</a>
+                    </h2>
+                    <div class="infos">
+                        Published {TimeAgo}{block:HasTags} 
+                        about {block:Tags}
+                        <a href="{TagURL}">{Tag}</a>,         
+                        {/block:Tags}...{/block:HasTags}
+                    </div>
+                </header>
+                <div class="words">{Description}</div>
             </article>
             {/block:Link}
 
@@ -181,6 +165,12 @@
                     </div>
                 </header>
                 <div class="words">{Body}</div>
+                
+                {block:PermalinkPage}
+                   <div class="comments" id="disqus_thread"></div>
+                {/block:PermalinkPage}
+                
+                
             </article>
             {/block:Text}
             {/block:Posts}
@@ -210,9 +200,9 @@
     
         <footer id="copyright" role="contentinfo">
             &copy; 2011-2012
-    	    <nav role="navigation">
-                &copy; 2011-2012
-    	    </nav>
+            <nav role="navigation">
+
+            </nav>
         </footer>
     
     </footer>
@@ -220,16 +210,32 @@
 </div>
 {block:IfGoogleAnalyticsID}
 <script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', '{text:Google Analytics ID']);
-	_gaq.push(['_trackPageview']);
-	
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{text:Google Analytics ID']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 </script>
 {/block:IfGoogleAnalyticsID}
+
+
+{block:PermalinkPage}{block:IfDisqusShortname}
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'markasread'; // Required - Replace <example> with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//markasread.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+{/block:IfDisqusShortname}{/block:PermalinkPage}
+
 </body>
 </html>
