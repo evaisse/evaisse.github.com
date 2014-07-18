@@ -1,0 +1,33 @@
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<a id="next" href="javascript://">GO NEXT (<i>1</i>)</a>
+
+<hr/>
+<a href="">page</a>
+
+<script>
+
+var i = 1;
+
+$('#next').click(function () {
+    
+    history.pushState({
+        "toto": '/gothere' + i++
+    }, 'hjhhkh', 'totot' + (i++) + ".html");
+
+    $('#next i').html(i);
+    
+});
+
+
+window.onpopstate = function () {
+    console.log('State', history.state);
+    console.log('Hits', i);
+}
+
+</script>
+</body>
