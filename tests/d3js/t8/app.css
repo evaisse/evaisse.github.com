@@ -1,0 +1,42 @@
+
+
+
+.x-axis .tick text {
+    text-anchor: middle;
+}
+
+.y-axis .tick text {
+    text-anchor: right;
+}
+
+path.domain {
+    stroke: black;
+    fill: none;
+}
+
+
+line {
+    stroke: blue;
+}
+
+
+g.tick line {
+    stroke: #888;
+    stroke-dasharray: 3;
+}
+
+.box-plot .median {
+    stroke: #999;
+    stroke-width: 3px;
+}
+
+.median-line {
+    stroke: red;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.diamond {
+    stroke: blue;
+    fill: blue; 
+}
