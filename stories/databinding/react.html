@@ -1,0 +1,45 @@
+<head>
+    <meta charset="utf-8" />
+    <title>React JS</title>
+    <link rel="stylesheet" href="app.css" media="screen" title="no title" charset="utf-8">
+    <script src="convert.js" charset="utf-8"></script>
+    <script src="lib/react.js" charset="utf-8"></script>
+    <script src="lib/JSXTransformer.js" charset="utf-8"></script>
+</head>
+<body>
+
+<script type="text/jsx" charset="utf-8">
+var TemperatureConverter = React.createClass({
+    getInitialState: function() {
+        return {c: 0}
+    },
+    render: function() {
+        var celciusValueLink = {
+            value: this.state.c.toString(),
+            requestChange: this.onCelsiusChange
+        }
+        var fahrenheitValueLink = {
+            value: c2f(this.state.c).toString(),
+            requestChange: this.onFahrenheitChange
+        }
+
+      return <div>
+          <input type="number" valueLink={celciusValueLink}/>°C
+          <span> ⇄ </span>
+          <input type="number" valueLink={fahrenheitValueLink}/>°F
+      </div>
+  },
+  onCelsiusChange: function(data) {
+      this.setState({c: parseFloat(data)})
+  },
+  onFahrenheitChange: function(data) {
+     this.setState({c: f2c(data)})
+  }
+});
+
+React.render(
+	<TemperatureConverter/>,
+	document.body
+);
+</script>
+</body>
