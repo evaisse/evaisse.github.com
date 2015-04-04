@@ -1,0 +1,37 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Angular JS</title>
+    <link rel="stylesheet" href="app.css" media="screen" title="no title" charset="utf-8">
+    <script src="convert.js" charset="utf-8"></script>
+    <script src="lib/angular.js" charset="utf-8"></script>
+</head>
+<body ng-app="temperature-converter">
+
+<div class="temperature-converter" id="app" ng-controller="TemperatureConverterCtrl">
+    <label class="celsius-wrap">
+        <input type="number" ng-model="c" class="celsius">°C
+    </label>
+	<span class="arrows">⇄</span>
+	<label class="fahrenheit-wrap">
+        <input type="number" ng-model="f" class="fahrenheit">°F
+    </label>
+</div>
+<script charset="utf-8">
+/*
+    Angularjs
+*/
+var m = angular.module('temperature-converter', []);
+
+
+m.controller('TemperatureConverterCtrl', function ($scope) {
+
+    this.celsius = 0;
+
+    $scope.c = this.celsius;
+    $scope.f = c2f(this.celsius);
+
+
+});
+
+</script>
+</body>

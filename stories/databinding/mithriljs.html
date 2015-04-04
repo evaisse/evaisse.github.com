@@ -1,0 +1,58 @@
+<head>
+    <meta charset="utf-8" />
+    <title>MithrilJS</title>
+    <link rel="stylesheet" href="app.css" media="screen" title="no title" charset="utf-8">
+    <script src="convert.js" charset="utf-8"></script>
+</head>
+<body>
+
+<div class="temperature-converter" id="app"></div>
+
+<script src="mithril.js" charset="utf-8"></script>
+<script charset="utf-8">
+
+//namespace
+var app = {};
+
+//controller
+app.controller = function() {
+	this.celsius = m.prop(0);
+	this.fahrenheit = function (v) {
+		if (!arguments.length) {
+			return c2f(this.celsius());
+		} else {
+			this.celsius(f2c(v));
+		}
+	}.bind(this);
+};
+
+//view
+app.view = function(ctrl) {
+	return [
+		m('label', {class:"celsius-wrap"}, [
+			m('input', {
+				type: "number",
+				class: "celsius",
+				value: ctrl.celsius(),
+				oninput: m.withAttr("value", ctrl.celsius),
+			}),
+			"°C",
+		]),
+		m('span', {class: "arrows"}, "⇄"),
+		m('label', {class:"fahrenheit-wrap"}, [
+			m('input', {
+				type: "number",
+				class: "fahrenheit",
+				value: ctrl.fahrenheit(),
+				oninput: m.withAttr("value", ctrl.fahrenheit),
+			}),
+			"°F",
+		]),
+	];
+};
+
+//initialize
+m.module(document.getElementById("app"), app);
+
+</script>
+</body>

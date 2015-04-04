@@ -1,0 +1,39 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Vanilla JS</title>
+    <link rel="stylesheet" href="app.css" media="screen" title="no title" charset="utf-8">
+    <script src="convert.js" charset="utf-8"></script>
+</head>
+<body>
+
+<div class="temperature-converter" id="app">
+    <label class="celsius-wrap">
+        <input type="number" class="celsius">°C
+    </label>
+	<span class="arrows">⇄</span>
+	<label class="fahrenheit-wrap">
+        <input type="number" class="fahrenheit">°F
+    </label>
+</div>
+
+<script src="app.js" charset="utf-8">
+/*
+    Vanilla JS
+*/
+
+var celsius = document.querySelector('.celsius');
+var fahrenheit = document.querySelector('.fahrenheit');
+
+celsius.value = 0;
+fahrenheit.value = c2f(celsius.value);
+
+celsius.oninput = function(e) {
+	fahrenheit.value = c2f(e.target.value)
+};
+
+fahrenheit.oninput = function(e) {
+	celsius.value = f2c(e.target.value)
+};
+</script>
+
+</body>
