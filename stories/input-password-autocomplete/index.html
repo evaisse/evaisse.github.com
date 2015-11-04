@@ -14,21 +14,24 @@
         max-width: 800px;
         margin: auto;
     }
+
+    [data-form-row] {
+        display: block;
+    }
+
     </style>
 </head>
 <body>
 <main>
-
     <form autocomplete="off">
-
-        <label>
+        <label data-form-row>
             Login
-            <input name="login" type="text" autocomplete="off">
+            <input name="login" type="text" autocomplete="off" />
         </label>
 
-        <label>
+        <label data-form-row>
             Password
-            <input name="password" type="password" autocomplete="off">
+            <input name="password" type="password" autocomplete="off" />
         </label>
     </form>
 </main>
