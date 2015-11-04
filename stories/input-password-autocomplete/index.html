@@ -1,38 +1,63 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Autocomplete problem</title>
 
     <style type="text/css">
+
     body {
-        font: sans-serif;
+        font-family: sans-serif;
         padding: 20px 10px;
     }
 
     main {
         width: 100%;
-        max-width: 800px;
+        max-width: 500px;
         margin: auto;
     }
 
-    [data-form-row] {
+    .form__row {
         display: block;
+        margin: 10px;
+        line-height: 20px;
+    }
+
+    .form__row input {
+        display: inline-block;
+    }
+
+    input, button {
+        padding: 4px;
+    }
+
+    .form__row label {
+        display: block;
+        margin: 4px 0;
     }
 
     </style>
 </head>
 <body>
 <main>
-    <form autocomplete="off">
-        <label data-form-row>
-            Login
-            <input name="login" type="text" autocomplete="off" />
-        </label>
+    <form autocomplete="off" method="post">
 
-        <label data-form-row>
-            Password
+        <div class="form__row">
+            <label>Login</label>
+            <input name="login" type="text" autocomplete="off" />
+        </div>
+
+        <div class="form__row">
+            <label>Password</label>
             <input name="password" type="password" autocomplete="off" />
-        </label>
+        </div>
+
+        <div class="form__row">
+
+            <input type=submit class="pull-left">
+            <input type=reset class="pull-right">
+
+        </div>
+
     </form>
 </main>
 </body>
